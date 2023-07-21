@@ -1,3 +1,3 @@
 module "repository" {
-    source = "./Modules/Services/ECR"
+  source = "./Modules/Pipeline/ECR"
 }
