@@ -1,10 +1,10 @@
 variable "cidr_block" {
-  type = string
+  type        = string
   description = "IP for VPC and subnets"
 }
 
 variable "region" {
-  type = string
+  type        = string
   description = "Region for project"
-  default = "us-east-1"
+  default     = "us-east-1"
 }
