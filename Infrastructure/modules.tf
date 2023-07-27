@@ -13,5 +13,5 @@ module "container_service" {
   ecr_repository     = module.repository.output_repository
   ecs_security_group = module.network.output_ecs_security_group
   vpc_id             = module.network.output_vpc
-  subnets            = ["${module.network.output_public_subnet_1a}","${module.network.output_public_subnet_1b}"]
+  subnets            = ["${module.network.output_public_subnet_1a}", "${module.network.output_public_subnet_1b}"]
 }
