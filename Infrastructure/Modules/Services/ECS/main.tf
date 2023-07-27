@@ -16,12 +16,15 @@ resource "aws_ecs_task_definition" "ecs_task" {
   family                   = "nodeapp-task-definition"
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
   requires_compatibilities = ["FARGATE"]
+  cpu                      = 1024
+  memory                   = 2048
   network_mode             = "awsvpc"
   container_definitions = jsonencode([
     {
       name      = "nodeapp-service"
       image     = "${var.ecr_repository}:latest"
-      cpu       = 10
+      cpu       = 1024
+      memory    = 2048
       essential = true
       portMappings = [
         {
