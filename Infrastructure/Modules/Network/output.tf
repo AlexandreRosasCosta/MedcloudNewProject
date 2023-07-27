@@ -2,6 +2,10 @@ output "output_ecs_security_group" {
   value = aws_security_group.ecs_security_group.id
 }
 
+output "output_application_lb_security_group" {
+  value = aws_security_group.application_lb_security_group.id
+}
+
 output "output_public_subnet_1a" {
   value = aws_subnet.pub-subnet-1a
 }

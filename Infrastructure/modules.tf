@@ -15,3 +15,10 @@ module "container_service" {
   vpc_id             = module.network.output_vpc
   subnets            = ["${module.network.output_public_subnet_1a}", "${module.network.output_public_subnet_1b}"]
 }
+
+module "load-balancer" {
+  source = "./Modules/Services/ALB"
+  lb_security_group  = module.network.output_application_lb_security_group
+  vpc_id             = module.network.output_vpc
+  subnets            = ["${module.network.output_public_subnet_1a}", "${module.network.output_public_subnet_1b}"]
+}
