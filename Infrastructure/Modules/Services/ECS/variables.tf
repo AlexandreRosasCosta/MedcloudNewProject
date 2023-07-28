@@ -22,3 +22,8 @@ variable "subnets" {
   type        = list(any)
   description = "List of subnets for ECS"
 }
+
+variable "alb_target_group" {
+  type        = string
+  description = "Target group for ECS"
+}

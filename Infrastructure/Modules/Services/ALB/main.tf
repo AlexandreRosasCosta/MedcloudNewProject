@@ -4,13 +4,7 @@ resource "aws_lb" "main" {
   security_groups    = [var.lb_security_group]
   subnets            = [for subnet in var.subnets : subnet.id]
 
-  enable_deletion_protection = true
-
-  access_logs {
-    bucket  = aws_s3_bucket.lb_logs.id
-    prefix  = "test-lb"
-    enabled = true
-  }
+  enable_deletion_protection = false
 
   tags = {
     Environment = "production"
