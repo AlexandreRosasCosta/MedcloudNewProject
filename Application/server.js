@@ -5,7 +5,7 @@ app.get('/', (req, res) => {
     res.send("A simple Web Application for Medcloud's test!");
 });
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}...`);
 });
