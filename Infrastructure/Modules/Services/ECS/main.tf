@@ -8,8 +8,8 @@ resource "aws_ecs_cluster_capacity_providers" "ecs_infrastructure" {
   capacity_providers = ["FARGATE"]
 
   default_capacity_provider_strategy {
-    base              = 1
-    weight            = 100
+    base              = 20
+    weight            = 50
     capacity_provider = "FARGATE"
   }
 }
@@ -39,9 +39,16 @@ resource "aws_ecs_task_definition" "main" {
 }
 
 resource "aws_ecs_service" "nodejs_ecs_service" {
-  name            = "nodejs_service"
+  name            = "nodejs-service"
   cluster         = aws_ecs_cluster.main.id
   task_definition = aws_ecs_task_definition.main.arn
+
+  load_balancer {
+    container_name   = aws_ecs_task_definition.main.cluster_name
+    container_port   = local.container_port
+    target_group_arn = var.alb_target_group
+  }
+
   network_configuration {
     security_groups  = [var.ecs_security_group]
     subnets          = [for subnet in var.subnets : subnet.id]
@@ -53,10 +60,4 @@ resource "aws_ecs_task_set" "main" {
   service         = aws_ecs_service.nodejs_ecs_service.id
   cluster         = aws_ecs_cluster.main.id
   task_definition = aws_ecs_task_definition.main.arn
-
-  load_balancer {
-    target_group_arn = var.alb_target_group
-    container_name   = "nodeapp-service"
-    container_port   = 8080
-  }
 }

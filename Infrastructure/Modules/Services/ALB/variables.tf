@@ -9,6 +9,6 @@ variable "vpc_id" {
 }
 
 variable "subnets" {
-  type        = list(any)
+  type        = list(string)
   description = "List of subnets for ECS"
 }

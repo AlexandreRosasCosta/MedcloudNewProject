@@ -5,9 +5,12 @@ module "network" {
 }
 
 module "repository" {
-  source = "./Modules/Services/ECR"
+  source            = "./Modules/Services/ECR"
+  account_id        = local.account_id
+  region            = local.aws_region
+  dockerfile_source = var.dockerfile_source
 }
-/* 
+
 module "container_service" {
   source             = "./Modules/Services/ECS"
   ecr_repository     = module.repository.output_repository
@@ -22,4 +25,4 @@ module "load-balancer" {
   lb_security_group = module.network.output_application_lb_security_group
   vpc_id            = module.network.output_vpc
   subnets           = ["${module.network.output_public_subnet_1a}", "${module.network.output_public_subnet_1b}"]
-} */
+} 
