@@ -2,6 +2,7 @@ resource "aws_lb_target_group" "main" {
   name     = "application-load-balancer-target-group"
   port     = 80
   protocol = "HTTP"
+  target_type = "ip"
   vpc_id   = var.vpc_id
 }
 
