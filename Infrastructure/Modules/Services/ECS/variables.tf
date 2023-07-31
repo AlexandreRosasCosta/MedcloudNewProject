@@ -1,6 +1,6 @@
-variable "ecr_repository" {
+variable "image" {
   type        = string
-  description = "Repository for ECS"
+  description = "Image for ECS"
 }
 
 variable "ecs_security_group" {
@@ -19,11 +19,16 @@ variable "vpc_id" {
 }
 
 variable "subnets" {
-  type        = list(any)
+  type        = list(string)
   description = "List of subnets for ECS"
 }
 
 variable "alb_target_group" {
   type        = string
   description = "Target group for ECS"
+}
+
+variable "container_port" {
+  type        = string
+  description = "Container port for ECS task definition"
 }

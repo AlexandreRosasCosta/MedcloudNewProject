@@ -10,3 +10,12 @@ data "aws_subnets" "public" {
     values = [module.network.output_vpc]
   }
 }
+
+resource "aws_cloudwatch_log_group" "current" {
+  name = "log-group"
+
+  tags = {
+    Environment = "production"
+    Application = "serviceA"
+  }
+}

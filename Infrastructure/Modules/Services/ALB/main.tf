@@ -7,6 +7,7 @@ resource "aws_lb" "main" {
   enable_deletion_protection = false
 
   tags = {
-    Environment = "production"
+    name    = "ecs-load-balancer"
+    project = "web-application-project"
   }
 }

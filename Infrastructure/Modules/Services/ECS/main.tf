@@ -24,16 +24,24 @@ resource "aws_ecs_task_definition" "main" {
   container_definitions = jsonencode([
     {
       name      = "nodeapp-service"
-      image     = "${var.ecr_repository}:latest"
+      image     = "${var.image}"
       cpu       = 1024
       memory    = 2048
       essential = true
       portMappings = [
         {
-          containerPort = 8080
-          hostPort      = 8080
+          containerPort = var.container_port
+          hostPort      = var.container_port
         }
       ]
+      logConfiguration = {
+        logDriver = "awslogs"
+        options = {
+          aws-logs-region       = var.region
+          awslogs-group         = aws_cloudwatch_log_group.current.name
+          awslogs-stream-prefix = "nodejs"
+        }
+      }
     }
   ])
 }
