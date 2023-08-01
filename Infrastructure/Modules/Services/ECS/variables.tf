@@ -19,7 +19,7 @@ variable "vpc_id" {
 }
 
 variable "subnets" {
-  type        = list(string)
+  type        = list(any)
   description = "List of subnets for ECS"
 }
 
@@ -31,4 +31,14 @@ variable "alb_target_group" {
 variable "container_port" {
   type        = string
   description = "Container port for ECS task definition"
+}
+
+variable "region" {
+  type        = string
+  description = "Region for container definition"
+}
+
+variable "cloudwatch-log-group" {
+  type        = string
+  description = "Log group for container definition"
 }

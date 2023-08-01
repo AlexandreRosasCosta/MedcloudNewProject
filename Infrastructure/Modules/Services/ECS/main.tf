@@ -24,7 +24,7 @@ resource "aws_ecs_task_definition" "main" {
   container_definitions = jsonencode([
     {
       name      = "nodeapp-service"
-      image     = "${var.image}"
+      image     = "${var.image}:latest"
       cpu       = 1024
       memory    = 2048
       essential = true
@@ -38,7 +38,7 @@ resource "aws_ecs_task_definition" "main" {
         logDriver = "awslogs"
         options = {
           aws-logs-region       = var.region
-          awslogs-group         = aws_cloudwatch_log_group.current.name
+          awslogs-group         = var.cloudwatch-log-group
           awslogs-stream-prefix = "nodejs"
         }
       }
@@ -52,8 +52,8 @@ resource "aws_ecs_service" "nodejs_ecs_service" {
   task_definition = aws_ecs_task_definition.main.arn
 
   load_balancer {
-    container_name   = aws_ecs_task_definition.main.cluster_name
-    container_port   = local.container_port
+    container_name   = "nodeapp-service"
+    container_port   = var.container_port
     target_group_arn = var.alb_target_group
   }
 

@@ -1,5 +1,18 @@
-resource "docker_image" "nodejs_image" {
-  name = "${var.ecr_repository}:latest"
+data "aws_ecr_repository" "service" {
+  name = var.ecr_repository
+}
+
+resource "docker_image" "this" {
+  name = format("%v:%v", data.aws_ecr_repository.service, formatdate("YYYY-MM-DD'T'hh-mm-ss", timestamp()))
+
+  build {
+    context = var.dockerfile_source
+  }
+}
+
+resource "docker_registry_image" "this" {
+  keep_remotely = true
+  name          = resource.docker_image.this.name
 }
 
 provider "docker" {

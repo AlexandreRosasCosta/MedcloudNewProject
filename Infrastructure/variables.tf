@@ -15,5 +15,6 @@ variable "dockerfile_source" {
 
 variable "ecr_repository" {
   type        = string
-  description = "Docker image"
+  description = "Repository from ECR"
 }
+

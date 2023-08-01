@@ -10,7 +10,7 @@ data "aws_subnets" "public" {
     values = [module.network.output_vpc]
   }
 }
-
+/*
 resource "aws_cloudwatch_log_group" "current" {
   name = "log-group"
 
@@ -19,3 +19,4 @@ resource "aws_cloudwatch_log_group" "current" {
     Application = "serviceA"
   }
 }
+*/

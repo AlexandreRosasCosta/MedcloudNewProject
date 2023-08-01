@@ -1,6 +1,6 @@
 resource "aws_lb_target_group" "main" {
-  name            = "application-load-balancer-target-group"
-  port            = local.container_port
+  name            = "application-load-balancer-tg"
+  port            = var.container_port
   protocol        = "HTTP"
   target_type     = "ip"
   ip_address_type = "ipv4"
