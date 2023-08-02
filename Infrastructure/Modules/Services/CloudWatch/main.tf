@@ -6,3 +6,7 @@ resource "aws_cloudwatch_log_group" "main" {
   }
 }
 
+resource "aws_cloudwatch_log_stream" "main" {
+  name           = "log-stream-cloudwatch"
+  log_group_name = aws_cloudwatch_log_group.main.name
+}
