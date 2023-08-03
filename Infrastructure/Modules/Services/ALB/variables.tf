@@ -8,12 +8,12 @@ variable "vpc_id" {
   description = "VPC for ECS subnets"
 }
 
-variable "subnets" {
-  type        = list(any)
-  description = "List of subnets for ECS"
-}
-
 variable "container_port" {
   type        = number
   description = "Container port for load balancer to point to ecs service"
+}
+
+variable "public_subnets" {
+  type        = list(any)
+  description = "List of subnets for ECS"
 }

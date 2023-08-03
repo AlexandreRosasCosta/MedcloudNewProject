@@ -1,4 +1,4 @@
-output "output_repository" {
+output "output_repository_arn" {
   value = aws_ecr_repository.main.arn
 }
 

@@ -1,20 +1,10 @@
 variable "cidr_block" {
   type        = string
-  description = "IP for VPC and subnets"
+  description = "IP for VPC"
 }
 
 variable "container_port" {
   type        = number
-  description = "Port for container traffic"
-}
-
-variable "dockerfile_source" {
-  type        = string
-  description = "Dockerfile for build"
-}
-
-variable "ecr_repository" {
-  type        = string
-  description = "Repository from ECR"
+  description = "Container por for ECS task definition"
 }
 
