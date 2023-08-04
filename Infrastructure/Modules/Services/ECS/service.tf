@@ -25,5 +25,13 @@ resource "aws_ecs_service" "nodejs_ecs_service" {
       "${var.aws_cloudwatch_metric_alarm_memory}"
     ]
   }
+
+  tags {
+    Name      = "nodejs-service"
+    Project   = "ECS project"
+    CreatedAt = "2023-08-04"
+    Owner     = "Alexandre Rosas Costa"
+    Service   = "ECS"
+  }
 }
 
