@@ -38,3 +38,12 @@ variable "vpc_id" {
   description = "VPC for ECS subnets"
 }
 
+variable "aws_cloudwatch_metric_alarm_cpu" {
+  type        = string
+  description = "CloudWatch alarm for the ECS service"
+}
+
+variable "aws_cloudwatch_metric_alarm_memory" {
+  type        = string
+  description = "CloudWatch alarm for the ECS service"
+}
