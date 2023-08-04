@@ -3,7 +3,7 @@ resource "aws_cloudwatch_log_group" "main" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "cpu_ecs_metric_alarm" {
-  alarm_name          = "ecr_alarm"
+  alarm_name          = "container_cpu_alarm"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = 4
   metric_name         = "CPUUtilization"
@@ -15,10 +15,10 @@ resource "aws_cloudwatch_metric_alarm" "cpu_ecs_metric_alarm" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "memory_ecs_metric_alarm" {
-  alarm_name          = "ecr_alarm"
+  alarm_name          = "container_memory_alarm"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = 4
-  metric_name         = "CPUUtilization"
+  metric_name         = "MemoryUtilized"
   namespace           = "ECS/ContainerInsights"
   period              = 120
   statistic           = "Average"
