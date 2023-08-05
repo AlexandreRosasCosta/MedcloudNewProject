@@ -4,9 +4,12 @@ resource "aws_subnet" "public_subnet_1a" {
   availability_zone       = "${data.aws_region.current.name}a"
   map_public_ip_on_launch = true
 
-  tags = {
-    Name = "public-subnet-1a"
-  }
+  tags = merge(
+    "${var.tags}",
+    {
+      Name    = "public-subnet-1a"
+      Service = "Subnet"
+  })
 }
 
 resource "aws_subnet" "public_subnet_1b" {
@@ -15,7 +18,10 @@ resource "aws_subnet" "public_subnet_1b" {
   availability_zone       = "${data.aws_region.current.name}b"
   map_public_ip_on_launch = true
 
-  tags = {
-    Name = "public-subnet-1b"
-  }
+  tags = merge(
+    "${var.tags}",
+    {
+      Name    = "public-subnet-1b"
+      Service = "Subnet"
+  })
 }

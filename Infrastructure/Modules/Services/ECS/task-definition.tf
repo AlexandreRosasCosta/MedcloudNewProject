@@ -5,6 +5,7 @@ resource "aws_ecs_task_definition" "main" {
   cpu                      = 256
   memory                   = 512
   network_mode             = "awsvpc"
+
   container_definitions = jsonencode([
     {
       name      = "nodeapp-service"
@@ -28,4 +29,11 @@ resource "aws_ecs_task_definition" "main" {
       }
     }
   ])
+
+  tags = merge(
+    "${var.tags}",
+    {
+      Name    = "nodeapp-task-definition"
+      Service = "ECS"
+  })
 }

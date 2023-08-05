@@ -3,9 +3,12 @@ resource "aws_subnet" "private_subnet_1a" {
   cidr_block        = cidrsubnet("${var.cidr_block}", 8, 3)
   availability_zone = "${data.aws_region.current.name}a"
 
-  tags = {
-    Name = "private-subnet-1a"
-  }
+  tags = merge(
+    "${var.tags}",
+    {
+      Name    = "private-subnet-1a"
+      Service = "Subnet"
+  })
 }
 
 resource "aws_subnet" "private_subnet_1b" {
@@ -13,7 +16,10 @@ resource "aws_subnet" "private_subnet_1b" {
   cidr_block        = cidrsubnet("${var.cidr_block}", 8, 4)
   availability_zone = "${data.aws_region.current.name}b"
 
-  tags = {
-    Name = "private-subnet-1b"
-  }
+  tags = merge(
+    "${var.tags}",
+    {
+      Name    = "private-subnet-1b"
+      Service = "Subnet"
+  })
 }

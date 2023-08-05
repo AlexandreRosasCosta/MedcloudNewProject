@@ -26,12 +26,11 @@ resource "aws_ecs_service" "nodejs_ecs_service" {
     ]
   }
 
-  tags {
-    Name      = "nodejs-service"
-    Project   = "ECS project"
-    CreatedAt = "2023-08-04"
-    Owner     = "Alexandre Rosas Costa"
-    Service   = "ECS"
-  }
+  tags = merge(
+    "${var.tags}",
+    {
+      Name    = "nodejs-service"
+      Service = "ECS"
+  })
 }
 

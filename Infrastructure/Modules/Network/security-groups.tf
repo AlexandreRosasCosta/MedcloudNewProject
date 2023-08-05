@@ -16,6 +16,13 @@ resource "aws_security_group" "application_lb_security_group" {
     to_port     = 0
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  tags = merge(
+    "${var.tags}",
+    {
+      Name    = "load-balancer-security-group"
+      Service = "Security-Group"
+  })
 }
 
 resource "aws_security_group" "ecs_security_group" {
@@ -36,4 +43,11 @@ resource "aws_security_group" "ecs_security_group" {
     to_port     = 0
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  tags = merge(
+    "${var.tags}",
+    {
+      Name    = "ecs-tasks-security-group"
+      Service = "Security-Group"
+  })
 }

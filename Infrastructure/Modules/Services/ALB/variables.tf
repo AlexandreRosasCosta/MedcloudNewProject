@@ -17,3 +17,8 @@ variable "public_subnets" {
   type        = list(any)
   description = "List of subnets for ECS"
 }
+
+variable "tags" {
+  type        = map(string)
+  description = "Tags for terraform"
+}

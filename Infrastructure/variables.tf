@@ -8,3 +8,6 @@ variable "container_port" {
   description = "Container por for ECS task definition"
 }
 
+variable "region" {
+  type = string
+}

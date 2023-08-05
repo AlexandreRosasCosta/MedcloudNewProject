@@ -6,9 +6,12 @@ resource "aws_route_table" "public_route_table" {
     gateway_id = aws_internet_gateway.main.id
   }
 
-  tags = {
-    Name = "public-route-table"
-  }
+  tags = merge(
+    "${var.tags}",
+    {
+      Name    = "public-route-table"
+      Service = "Route-Table"
+  })
 }
 
 resource "aws_route_table" "private_route_table_1a" {
@@ -19,9 +22,12 @@ resource "aws_route_table" "private_route_table_1a" {
     nat_gateway_id = aws_nat_gateway.nat_gateway_1a.id
   }
 
-  tags = {
-    Name = "private-route-table-1a"
-  }
+  tags = merge(
+    "${var.tags}",
+    {
+      Name    = "private-route-table-1a"
+      Service = "Route-Table"
+  })
 }
 
 resource "aws_route_table" "private_route_table_1b" {
@@ -31,10 +37,13 @@ resource "aws_route_table" "private_route_table_1b" {
     cidr_block     = "0.0.0.0/0"
     nat_gateway_id = aws_nat_gateway.nat_gateway_1b.id
   }
-
-  tags = {
-    Name = "private-route-table-1b"
-  }
+  
+  tags = merge(
+    "${var.tags}",
+    {
+      Name    = "private-route-table-1b"
+      Service = "Route-Table"
+  })
 }
 
 resource "aws_route_table_association" "public_route_table_assoc_1a" {

@@ -47,3 +47,8 @@ variable "aws_cloudwatch_metric_alarm_memory" {
   type        = string
   description = "CloudWatch alarm for the ECS service"
 }
+
+variable "tags" {
+  type        = map(string)
+  description = "Tags for terraform"
+}
