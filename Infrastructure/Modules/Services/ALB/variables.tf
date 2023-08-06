@@ -15,7 +15,7 @@ variable "container_port" {
 
 variable "public_subnets" {
   type        = list(any)
-  description = "List of subnets for ECS"
+  description = "List of subnets for the ECS"
 }
 
 variable "tags" {

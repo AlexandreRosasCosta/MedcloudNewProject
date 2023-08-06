@@ -24,6 +24,7 @@ variable "ecs_security_group" {
 }
 
 variable "ecs_task_execution_role" {
+  type        = string
   default     = "ecs_task_execution_role"
   description = "ECS task execution role name"
 }
@@ -40,12 +41,12 @@ variable "vpc_id" {
 
 variable "aws_cloudwatch_metric_alarm_cpu" {
   type        = string
-  description = "CloudWatch alarm for the ECS service"
+  description = "CloudWatch alarm for ECS cluster CPU"
 }
 
 variable "aws_cloudwatch_metric_alarm_memory" {
   type        = string
-  description = "CloudWatch alarm for the ECS service"
+  description = "CloudWatch alarm for ECS cluster memory"
 }
 
 variable "tags" {
