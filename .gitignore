@@ -3,3 +3,4 @@
 /Infrastructure/*.tfvars
 /Infrastructure/*.tfstate.*
 /Application/node_modules
+./Application/*

@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 
 app.get('/healthcheck', (req, res) => {
     try{
-        res.sendStatus(204);
+        res.sendStatus(200);
     }catch(error){
         res.sendStatus(500);
     }

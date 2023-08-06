@@ -6,6 +6,7 @@ resource "aws_ecs_service" "nodejs_ecs_service" {
   desired_count   = 2
 
   load_balancer {
+    elb_name         = var.alb_name
     container_name   = "nodeapp-service"
     container_port   = var.container_port
     target_group_arn = var.alb_target_group
@@ -25,6 +26,10 @@ resource "aws_ecs_service" "nodejs_ecs_service" {
       "${var.aws_cloudwatch_metric_alarm_memory}"
     ]
   }
+
+  deployment_minimum_healthy_percent = 100
+
+  deployment_maximum_percent = 200
 
   tags = merge(
     "${var.tags}",
